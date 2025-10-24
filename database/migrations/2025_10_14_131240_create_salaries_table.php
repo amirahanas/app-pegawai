@@ -26,6 +26,8 @@ return new class extends Migration
                     ->references('id')
                     ->on('employees')
                     ->onDelete('cascade');
+
+                    $table->unique(['karyawan_id', 'bulan']);
         });
     }
 
