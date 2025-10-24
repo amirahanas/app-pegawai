@@ -12,9 +12,10 @@
                 <li><a href="{{ url('/employees') }}">Employee</a></li>
                 <li><a href="{{ url('/departments') }}">Department</a></li>
                 <li><a href = "{{ url('/attendances') }}">Attendance</a></li>
-                <li><a href="{{ url('/reports') }}">Report</a></li>
-                <li><a href="{{ url('/settings') }}">Settings</a></li>
-            </ul>
+                <li><a href="{{ url('/salaries') }}">Salary</a></li>
+                <li><a href="{{ url('/positions') }}">Position</a></li>
+            </ul>   
+
         </nav>
     </header>
     <main>
