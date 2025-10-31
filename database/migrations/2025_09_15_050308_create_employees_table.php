@@ -1,0 +1,46 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('employees', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama_lengkap', 100);
+            $table->string('email', 100);
+            $table->string('nomor_telepon', 15);
+            $table->date('tanggal_lahir');
+            $table->string('alamat');
+            $table->string('tanggal_masuk');
+            $table->string('status', ['aktif', 'non-aktif'])->default('aktif'); 
+            $table->unsignedBigInteger('department_id');
+            $table->unsignedBigInteger('jabatan_id');
+
+            // Foreign key constraints
+            $table->foreign('department_id')
+                  ->references('id')
+                  ->on('departments')
+                  ->onDelete('cascade');
+            $table->foreign('jabatan_id')
+                    ->references('id')
+                    ->on('positions')
+                    ->onDelete('cascade');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('employees');
+    }
+};
